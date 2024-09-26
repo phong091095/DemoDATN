@@ -1,0 +1,32 @@
+﻿@using Radzen
+@using Radzen.Blazor
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
+
+<RadzenHeader Style="position:static;">
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween" class="mr-2">
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.Start">
+            <RadzenSidebarToggle Click="@(() => _sideBarExpanded = !_sideBarExpanded)" />
+@*             <RadzenImage Style="width: 100px;" Path="/Images/logo" class="mb-1" />
+ *@        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End">
+            <RadzenText Text="UserName" class="mb-0" />
+            <RadzenIcon Icon="account_circle" />
+        </RadzenStack>
+    </RadzenStack>
+</RadzenHeader>
+<RadzenSidebar Responsive="false" Style="width: max-content">
+    <RadzenPanelMenu DisplayStyle="@(_sideBarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
+        <RadzenPanelMenuItem Text="Dashboard" Icon="home"  Path="/" />
+        <RadzenPanelMenuItem Text="Factory" Icon="finance"  Path="/factory" />
+        <RadzenPanelMenuItem Text="Line" Icon="auto_awesome"  Path=""/>
+        <RadzenPanelMenuItem Text="Report" Icon="analytics" Path="" />
+        <hr />
+        <RadzenPanelMenuItem Text="Logout" Icon="logout"  Path="" />
+    </RadzenPanelMenu>
+</RadzenSidebar>
+
+@code{
+    bool _sideBarExpanded = true;
+
+}

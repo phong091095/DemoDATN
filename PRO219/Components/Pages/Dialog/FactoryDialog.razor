@@ -1,0 +1,62 @@
+﻿@page "/factorydialog"
+@using Radzen.Blazor
+@using Radzen
+@rendermode InteractiveServer
+@inject DialogService DialogService
+@inject NotificationService NotificationService
+
+<RadzenCard>
+    <ChildContent>
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>Factory Name:</b></label>
+                        <input type="text"  placeholder="Enter factory name" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>Note:</b></label>
+                        <input  type="text" placeholder="Enter notes about the factory"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>UpdateBy:</b></label>
+                        <input type="text" placeholder="Enter updator" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>Create By:</b></label>
+                        <input type="text" placeholder="Enter creator" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>Create Date:</b></label>
+                        <input type="datetime-local" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label><b>Update Date:</b></label>
+                        <input type="datetime-local" />
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="row mt-4">
+                <div class="col-12">
+                    <RadzenButton Text="Insert" />
+                </div>
+            </div>
+        </div>
+    </ChildContent>
+</RadzenCard>

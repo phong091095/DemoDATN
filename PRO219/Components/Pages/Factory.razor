@@ -1,0 +1,64 @@
+﻿@page "/factory"
+@using Radzen
+@using Radzen.Blazor
+@rendermode InteractiveServer
+@inject DialogService DialogService
+@inject NotificationService NotificationService
+
+<RadzenDataGrid @ref="grid"
+                    AllowFiltering="true"
+                    AllowColumnResize="true"
+                    AllowMultiColumnSorting="true"
+                    AllowVirtualization="true"
+                    AllowAlternatingRows="true"
+                    AllowGrouping="false"
+                    ColumnsPickerAllowFiltering=true
+                    AllowColumnPicking=false
+                    AllowPickAllColumns="true"
+                    ShowMultiColumnSortingIndex=true
+                    AllowSorting="true"
+                    AllowColumnReorder="true"
+                    Data="@factorydata"
+                    TItem="Models.Factory"
+                    class="w-100"
+                    ColumnWidth="150px"
+                    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                    FilterMode="FilterMode.CheckBoxList"
+                    FilterPopupRenderMode="PopupRenderMode.OnDemand">
+        <HeaderTemplate>
+            <RadzenRow>
+                <RadzenColumn Size="12">
+                    <RadzenText Text="Factory Data" TextStyle="TextStyle.DisplayH5" class="float-left rz-float-left rz-mt-3 rz-mr-3 rz-ml-1" />
+                    <RadzenFormField AllowFloatingLabel="true" Text="Search" Variant="Variant.Text" Style="scale:0.9;" class="float-end rz-float-right">
+                        <ChildContent>
+                            <RadzenTextBox/>
+                        </ChildContent>
+                        <End>
+                            <RadzenButton Icon="search" Variant="Variant.Text" Size="ButtonSize.Small" class="mr-2" />
+                            <RadzenButton Icon="filter_alt_off" Variant="Variant.Text" Size="ButtonSize.Small"  />
+                        </End>
+                    </RadzenFormField>
+                    <RadzenButton Icon="add_circle" Size="ButtonSize.Medium" Click="InsertDialog" class="float-end rz-float-right rz-mt-2" />
+                </RadzenColumn>
+            </RadzenRow>
+        </HeaderTemplate>
+        <Columns>
+        <RadzenDataGridColumn TItem="Models.Factory" Title="IsDeleted" Width="110px" Filterable="false" Sortable="false" Frozen="true" TextAlign="TextAlign.Center">
+            <Template Context="item">
+                <RadzenSwitch @bind-Value="@item.IsDeleted"/>
+            </Template>
+            </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Models.Factory" Title="Edit" Width="110px" Filterable="false" Sortable="false" Frozen="true" TextAlign="TextAlign.Center">
+            <Template Context="item">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" class="mb-1 mt-1" @onclick:stopPropagation="true"/>
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.FactoryId)" Title="Factory Id" Width="200px" Frozen="true"/>
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.FactoryName)" Title="Factory Name" Width="200px"  />
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.CreateDate)" Title="Create Date" Width="200px"  />
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.CreateBy)" Title="Create By" Width="200px"  />
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.UpdateDate)" Title="Update Date" Width="200px"  />
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.UpdateBy)" Title="Update By" Width="200px"  />
+        <RadzenDataGridColumn Property="@nameof(Models.Factory.Note)" Title="Note" Width="200px"  />
+         </Columns>
+</RadzenDataGrid>
